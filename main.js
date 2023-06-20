@@ -788,3 +788,13 @@ var isEmpty = function(obj) {
         return true
     } 
  };
+
+ /* 2635. Apply Transform Over Each Element in Array */
+
+ var map = function(arr, fn) {
+    returnedArray = new Array(arr.length)
+    for (let i = 0; i < arr.length; i++) {
+        returnedArray[i] = fn(arr[i], i)
+    }
+    return returnedArray
+};
