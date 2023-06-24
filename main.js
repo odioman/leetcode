@@ -791,6 +791,7 @@ var isEmpty = function(obj) {
 
  /* 2635. Apply Transform Over Each Element in Array */
 
+ //googled solution
  var map = function(arr, fn) {
     returnedArray = new Array(arr.length)
     for (let i = 0; i < arr.length; i++) {
@@ -798,3 +799,11 @@ var isEmpty = function(obj) {
     }
     return returnedArray
 };
+//my solution
+var map = function(arr, fn) {
+    let returnedArray = [];
+    for (let i=0; i < arr.length; i++) {
+        returnedArray.push(fn(arr[i],i))
+    }
+    return returnedArray;
+}
