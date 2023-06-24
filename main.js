@@ -807,3 +807,20 @@ var map = function(arr, fn) {
     }
     return returnedArray;
 }
+
+/* 2634. Filter Elements from Array */
+var filter = function(arr, fn) {
+    //make empty array
+    //for loop to iterate over each element of array
+    // if (fn(arr[i], i)) === truthy
+    //add (push) filtered elements to empty arrray
+    //return array
+        const filteredArr = [];
+        for (let i=0; i<arr.length; i++) {
+            if (fn(arr[i],i)) {
+                filteredArr.push(arr[i])
+            }
+        }
+        console.log(filteredArr);
+        return filteredArr
+    };
