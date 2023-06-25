@@ -824,3 +824,49 @@ var filter = function(arr, fn) {
         console.log(filteredArr);
         return filteredArr
     };
+
+/* 1748. Sum of Unique Elements */
+/**
+ * @param {number[]} nums
+ * @return {number} return sum of unique elements
+ */
+var sumOfUnique = function(nums) {
+    //if element appears once, add it to the total 
+    //find sum of all elements that appear only one time
+    //use an object to keep track of how many times number occurs keys-numbers values-how many times they happen
+    const counterObj = {};
+    //iterating over nums array to find unique (one-time occurring) element
+    for (let i=0; i<nums.length; i++) {
+        //if number has occurence, increase value by 1
+        //if number not in object yet, add number to object, setting value equal to 1 
+        if (counterObj[nums[i]]) {
+            counterObj[nums[i]]++
+        } else {
+            counterObj[nums[i]] = 1
+        }
+    }
+    //get keys where value equals one 
+    //filter Object.keys where occurence is 1
+    const keys = Object.keys(counterObj)
+    console.log(keys)
+    const uniqueNums = keys.filter(key => {
+        if (counterObj[key] === 1) {
+            return true
+            //filter places truthy values in the array, so return true
+        } else {
+            return false
+        }
+    })
+    //This point we will have all the keys where value equals 1   
+    console.log(uniqueNums)
+    //find sum of these keys 
+
+    const sumOfUniqueNums = uniqueNums.reduce((acc, cur) => {
+        console.log("cur:", typeof cur)
+        console.log("acc: ", typeof acc)
+        return acc + Number(cur)
+    }, 0)
+
+    //return sum
+    return sumOfUniqueNums
+};
