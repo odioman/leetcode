@@ -870,3 +870,15 @@ var sumOfUnique = function(nums) {
     //return sum
     return sumOfUniqueNums
 };
+
+/* 58. Length of Last Word */ 
+
+var lengthOfLastWord = function(s) {
+    //split and trim the input s
+    const words = s.trim().split(' ')
+    //find the length of the last word
+    const lastWordLength = words[words.length - 1].length
+    //return length of last word
+    return lastWordLength
+    
+};
