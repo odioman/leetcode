@@ -882,3 +882,47 @@ var lengthOfLastWord = function(s) {
     return lastWordLength
     
 };
+
+/* 205. Isomorphics Strings */
+// 35/44 testcases passing
+var isIsomorphic = function(s, t) {
+    //create obj1 and obj2. These objs will house the key-value pair of letters(keys) and occurences(values)
+    const sObj = {};
+    const tObj = {};
+    //iterate over word
+    //set keys in obj to letters, set values in obj to occurences
+    //if letter exists in sObj, add one more to occurences 
+    //if it doesn't exist, set occurences to 1
+    for (let i=0; i<s.length; i++) {
+        if(sObj[s[i]]) {
+            sObj[s[i]]++
+        } else {
+            sObj[s[i]] = 1
+        }
+    }
+
+    //iterate over second word
+    //do the same thing with keys and values with letters and occurences as did above
+    for (let j=0; j<t.length; j++) {
+        if (tObj[t[j]]) {
+            tObj[t[j]]++
+        } else {
+            tObj[t[j]] = 1
+        }
+    }
+    //get values of sObj and tObj and convert to string in order to compare them. If they equal each other, then s can be replaced by t, if they don't equal each other, then they can't
+    sObjString = Object.values(sObj).sort().toString();
+    tObjString = Object.values(tObj).sort().toString();
+    console.log(sObjString);
+    console.log(tObjString);
+
+    //doesn't work: REMEMBER Arrays don't equal each other because of     memory
+    //if they do return true, if they don't return false
+    if (sObjString === tObjString) {
+        return true
+    } else {
+        return false 
+    }
+
+}
+
