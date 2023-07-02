@@ -911,8 +911,8 @@ var isIsomorphic = function(s, t) {
         }
     }
     //get values of sObj and tObj and convert to string in order to compare them. If they equal each other, then s can be replaced by t, if they don't equal each other, then they can't
-    sObjString = Object.values(sObj).sort().toString();
-    tObjString = Object.values(tObj).sort().toString();
+    sObjString = Object.values(sObj).toString();
+    tObjString = Object.values(tObj).toString();
     console.log(sObjString);
     console.log(tObjString);
 
