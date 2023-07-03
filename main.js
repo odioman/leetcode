@@ -926,3 +926,34 @@ var isIsomorphic = function(s, t) {
 
 }
 
+//this one passes all tests
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean} true if the characters of s can be replaced by t /*== and if the characters in t can be replaced by the characters in s */
+
+ var isIsomorphic = function(s, t) {
+
+    //initialize two Objects to hold the letters of s and t
+        const object = {};
+        const object2 = {};
+    //for loop it iterate over the strings
+    //s = 'bob' and t = 'cat'
+        for (let i=0; i<s.length; i++) {
+            //match a letter in s to a letter in t 
+            //if indexed letter does not line up with indexed letter of t, return false
+            //if letter of s already is lined up with a letter of t and does not equal undefined, return false
+            if (object[s[i]] !== undefined && object[s[i]] !== t[i]) {
+                return false        
+            }
+            if (object2[t[i]] !== undefined && object2[t[i]] !== s[i]) {
+                return false
+            }
+                //assign letter of s to letter of t
+            object[s[i]] = t[i] 
+            //assign letter of t to letter of s
+            object2[t[i]] = s[i]
+            }
+        return true
+    }
+
