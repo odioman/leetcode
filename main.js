@@ -957,3 +957,17 @@ var isIsomorphic = function(s, t) {
         return true
     }
 
+/* 1. Two Sum */
+var twoSum = function(nums, target) {
+    //array to push indices to
+    finalArr = [];
+    //for loop to iterate over numbers
+    for (let i = 0; i < nums.length; i++) {
+        for (let j=1; j<nums.length; j++) {
+           if (nums[i]+ nums[i+j] === target) {
+            finalArr.push(i, i+j)
+           }        
+        }
+    }
+    return finalArr
+}
