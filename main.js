@@ -971,3 +971,17 @@ var twoSum = function(nums, target) {
     }
     return finalArr
 }
+
+/* 136. Single Number */
+var singleNumber = function(nums) {
+    map = {};
+
+    for (i = 0; i < nums.length; i++) {
+        if (map[nums[i]]) {
+            delete map[nums[i]]
+        } else {
+            map[nums[i]] = 1;
+        }
+    }
+    return parseInt(Object.keys(map)[0])
+}
