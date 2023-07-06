@@ -974,14 +974,40 @@ var twoSum = function(nums, target) {
 
 /* 136. Single Number */
 var singleNumber = function(nums) {
-    map = {};
+    const obj = {};
 
     for (i = 0; i < nums.length; i++) {
-        if (map[nums[i]]) {
-            delete map[nums[i]]
+        if (obj[nums[i]]) {
+            delete obj[nums[i]]
         } else {
-            map[nums[i]] = 1;
+            obj[nums[i]] = 1;
         }
     }
-    return parseInt(Object.keys(map)[0])
+    return parseInt(Object.keys(obj)[0])
 }
+/* 88. Merge Sorted Array */
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+ var merge = function(nums1, m, nums2, n) {
+    //choose m elements of nums1 => nums1[m - 1]
+        nums1.splice(m);
+    //choose n elements of nums2
+        nums2.splice(n);
+        console.log(nums2)
+    //join elements together
+    for (let i=0; i<nums2.length; i++) {
+        nums1.push(nums2[i]) // edited nums2 
+    
+    }
+    //sort array (nums1)
+        nums1.sort(sortIncreasing)
+        function sortIncreasing(a,b) {
+            return a - b    
+    }    
+    // 
+    }
