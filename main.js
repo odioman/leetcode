@@ -1011,3 +1011,9 @@ var singleNumber = function(nums) {
     }    
     // 
     }
+
+    /* 344. Reverse String */
+    var reverseString = function(s) {
+        const reverseS = s.reverse()
+        return reverseS
+    };
