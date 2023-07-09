@@ -1024,4 +1024,33 @@ var singleNumber = function(nums) {
           return "Hello World"  
         }
     };
+
+    /* 2620. Counter */
+    var createCounter = function(n) {
+        return function() {
+            return n++
+            
+        };
+    };
+
+    /* 2704. To Be Or Not To Be */ 
+    var expect = function(val) {
+        return {
+          toBe: function(val2) {
+            if (val === val2) {
+              return true
+            } else {
+              throw new Error('Not Equal')
+            }
+          },
+          notToBe: function(val2) {
+            if (val === val2) {
+              throw new Error('Equal')
+            } else {
+              return true
+            }
+          }
+        }
+          
+    };
     
