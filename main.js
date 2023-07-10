@@ -1053,4 +1053,67 @@ var singleNumber = function(nums) {
         }
           
     };
+
+/* 219. Contains Duplicate II */
+
+    /**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+    //iterate over the array ith times
+    //iterate over the array jth times
+    //if nums[i] == nums[j]
+    //  if Math.abs(i - j) <= k
+    //      return true
+    //else return false
+    for (let i=0; i<nums.length; i++) {
+        for (let j=1; j<nums.length; j++) {
+            if (i !== j) {
+                if (nums[i] === nums[j] && Math.abs(i-j) <= k) {
+                    console.log("i:", i, "j: ", j)
+                    return true
+                }
+            }
+        }
+    }
+    return false
+};
+
+/* 2677. Chunk Array */
+/**
+ * @param {Array} arr - original array
+ * @param {number} size - the number of elements in the subarrays
+ * @return {Array[]} - return array for chunked subarrays of length size
+*/
+var chunk = function(arr, size) {
+    //declare a variable that's data structure is an array outside for loop;
+    const finalArr = [];
     
+    //declare a variable that is subarray that is an array
+    let subArr = [];
+    // [1]
+    //clear out subArr, subArr = [];
+    //[[1]]
+    //push second number to subArr
+    // [2]
+    //push [2] to finalArr;
+    //[[1],[2]]
+    //for loop to iterate over elements in arr
+    for (let i=0; i<arr.length; i++) { 
+        subArr.push(arr[i])
+        if (subArr.length == size) {
+            finalArr.push(subArr)
+            subArr = [];       
+        } else if (i === arr.length - 1) {
+            finalArr.push(subArr)
+        }
+    }
+    return finalArr
+    //possibly subArr.push(element)
+    //finalArr.push(subArr)
+    //return finalArr  
+
+
+};
