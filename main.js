@@ -1122,3 +1122,23 @@ var chunk = function(arr, size) {
 var strStr = function(haystack, needle) {
     return haystack.indexOf(needle)
 };
+
+/* 217. Contains Duplicate */
+var containsDuplicate = function(nums) {
+    //declare an object
+        const obj = {}
+    //iterate over the elements of the array
+        for (let i=0; i<nums.length; i++) {
+            //if obj[key] add another to its value
+            if (obj[nums[i]]) {
+                obj[nums[i]]++
+                return true
+            } else {
+                //else obj[key] = 1
+                obj[nums[i]] = 1           
+            }
+            
+            }
+        return false 
+        }
+         
