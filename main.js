@@ -1141,4 +1141,29 @@ var containsDuplicate = function(nums) {
             }
         return false 
         }
-         
+ 
+/* 283. Move Zeroes */
+var moveZeroes = function(nums) {
+    //declare a zeroArray
+    const zeroArray = [];
+    //iterate over each element of nums with a for loop
+    for (let i=0; i<nums.length; i++) {
+      console.log("i: ", i, nums[i]);
+        if (nums[i] === 0) {
+            //if nums[i] === 0, remove 0 from the array
+            //this is only getting one 0 for test [0,0,1]
+            //the output is [0,1,0] for that failing test
+            //this should work because the test [0,1,0,3,12] passes
+            nums.splice(i, 1);
+            //add a zero to zeroArray
+            zeroArray.push(0);
+            i--;
+        }
+    }
+    //add zeroArray to nums
+    nums.push(...zeroArray)
+    console.log(nums)
+    console.log(zeroArray)
+    //logging zeroArray only gives one zero for test [0,0,1]
+    //I don't really understand why it's not working
+};
