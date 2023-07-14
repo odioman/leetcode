@@ -1169,3 +1169,20 @@ var moveZeroes = function(nums) {
 };
 
 /* 350. Intersection of Two Arrays II */
+var intersect = function(nums1, nums2) {
+    //arr to hold answer
+    const finalArr = [];
+    //iterate over one of the arrays
+    for (let i=0; i<nums2.length; i++) {
+        //find overlapping numbers using indexOf 
+        let index = nums1.indexOf(nums2[i]);
+        //if index is 0 or greater, indicates number is in both arrays
+        if (index >= 0) {
+            //add num to results array
+            finalArr.push(nums2[i]);
+            //remove element from array
+            nums1.splice(index, 1)
+        }
+    }
+    return finalArr
+}
