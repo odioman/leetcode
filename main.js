@@ -1186,3 +1186,72 @@ var intersect = function(nums1, nums2) {
     }
     return finalArr
 }
+
+/* 350. Intersection of Two Arrays II - doesn't mutate array */ 
+var intersect = function(nums1, nums2) {
+    const numCount = {};
+    //arr to hold answer
+    const finalArr = [];
+    //iterate over one of the arrays
+    for (let i=0; i<nums2.length; i++) {
+        //find overlapping numbers using indexOf 
+        let index = nums1.indexOf(nums2[i]);
+        //if index is 0 or greater, indicates number is in both arrays
+        if (index >= 0) {
+            if (numCount[nums2[i]] !== undefined) {
+            //add num to results array
+            finalArr.push(nums2[i]);
+            } else {
+                numCount[nums2[i]] = 1
+            }
+            
+            //remove element from array
+            //nums1.splice(index, 1)
+        }
+    }
+    return finalArr
+} 
+
+/* 290. Word Pattern */
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+ var wordPattern = function(pattern, s) {
+    //declare an empty object
+    const patternToWordObj = {}; 
+    const wordToPatternObj = {};
+    //split s
+    const wordsArr = s.split(' ');
+    console.log(wordsArr);
+    //iterate over wordsArr
+    if (pattern.length !== wordsArr.length) {
+        return false
+    }
+    for (let i=0; i<wordsArr.length; i++) {
+    //store letter of pattern with word in object
+        if (wordToPatternObj[wordsArr[i]] && typeof wordToPatternObj[wordsArr[i]] !== 'function') {
+            if (patternToWordObj[pattern[i]] !== wordsArr[i]) {
+                console.log('21',patternToWordObj[pattern[i]], wordsArr[i], pattern[i])
+
+                return false
+            }
+            if (wordToPatternObj[wordsArr[i]] !== pattern[i]) {
+                console.log('25')
+                return false;
+            }
+        } else {
+            wordToPatternObj[wordsArr[i]] = pattern[i]
+            if (patternToWordObj[pattern[i]]) {
+                console.log('31')
+                return false
+            }
+            patternToWordObj[pattern[i]] = wordsArr[i]
+        }
+    }
+    //if a:dog, a:fish we have a problem should return false
+    //if make it through the loop, return true; 
+    console.log('39')
+    return true
+}; 
