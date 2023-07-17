@@ -1255,3 +1255,56 @@ var intersect = function(nums1, nums2) {
     console.log('39')
     return true
 }; 
+
+/* 445. Add Two Numbers II */
+var addTwoNumbers = function(l1, l2) {
+    //Convert to stacks
+    const firstStack = [];
+    const secondStack = []; 
+    //How is the stack made?
+        //iterate over a list, adding each value to the stack
+        while(l1) {
+        firstStack.push(l1.val);
+        l1 = l1.next 
+        }
+        while(l2) {
+            secondStack.push(l2.val);
+            l2 = l2.next 
+            }
+        //Use an JS array as a stack, limits us to using only push() and pop()
+
+    //create a new list to store our answer
+    let l3 = new ListNode(0)
+
+    //iterate until both stacks are exhausted
+    while(firstStack.length > 0|| secondStack.length > 0) { // 0 is a falsy value, can get rid of > 0 part
+        let sum = 0;
+        //grab the next element in each stack
+        //Null check each stack
+        //sum the plates
+        if (firstStack.length) {
+            sum += firstStack.pop()
+        }
+        if (secondStack.length) {
+            sum += secondStack.pop()
+        }
+        sum += l3.val
+        //figure out if the sum is more than 10
+        //use the mod operator to get the last digit
+        l3.val = sum % 10
+        //divide by 10 to get the "tens' digit and flooring the number
+        //we store the first digit (tens place digit) in new node
+        //and point that node at the current node
+        const head = new ListNode(Math.floor(sum/10))
+        head.next = l3
+        //finally, we update our 'head' (where our pointer is looking at) to the new node
+        l3 = head
+    
+    } 
+        
+        
+    //it's possible that our first digit is a zero
+    //if so, we return the entry to the second node instead of the first
+
+    return l3.val === 0 ? l3.next : l3;
+}
