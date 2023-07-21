@@ -1309,7 +1309,7 @@ var addTwoNumbers = function(l1, l2) {
     return l3.val === 0 ? l3.next : l3;
 }
 
-/* 405 Convert a Number to Hexadecimal */
+/* 405 Convert a Number to Hexadecimal - not working */
 var toHex = function(num) {
     const finalAns = [];
     const decimalToHexLibrary = {0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 10:'a', 11:'b', 12:'c', 13:'d', 14:'e', 15:'f'}
@@ -1318,4 +1318,27 @@ var toHex = function(num) {
         finalAns.push(decimalToHexLibrary[formula])
    } 
     return finalAns
+};
+
+/* 414. Third Maximum Number */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var thirdMax = function(nums) {
+    const newSet = new Set(nums)
+    console.log(newSet)
+    const newSetArr = [...newSet];
+    console.log(newSetArr)
+    const sortNewSetArr = newSetArr.sort((a,b) => {
+        return a - b
+    })
+    
+    if (sortNewSetArr.length < 3) {
+        return sortNewSetArr[sortNewSetArr.length - 1]
+    }
+
+    if (sortNewSetArr.length >= 3) {
+        return sortNewSetArr[sortNewSetArr.length - 3]
+    }
 };
