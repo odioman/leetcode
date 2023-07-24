@@ -1342,3 +1342,29 @@ var toHex = function(num) {
         return sortNewSetArr[sortNewSetArr.length - 3]
     }
 };
+
+/* 435. Non-overlapping Intervals */
+var eraseOverlapIntervals = function(intervals) {
+    let answer = 0;
+    //sort the intervals by the end points
+    intervals.sort((a,b) => {
+        return a[1] - b[1]
+    })
+
+    //grab the end point of the first interval
+    let previousEndPoint = intervals[0][1]
+    //iterate over intervals starting with the second index
+        for (let i=1; i<intervals.length; i++) {
+            //check if last end is greater than the current start point
+            if (previousEndPoint > intervals[i][0]) {
+                //if yes, increment answer
+                answer++    
+            } else {
+                //if no, update the last end point
+                previousEndPoint = intervals[i][1]    
+            }     
+            
+
+        }
+    return answer
+};
