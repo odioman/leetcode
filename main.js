@@ -1368,3 +1368,28 @@ var eraseOverlapIntervals = function(intervals) {
         }
     return answer
 };
+
+/* 27. Remove Element */
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+ var removeElement = function(nums, val) {
+    //remove instances of val from nums
+//iterate over the array    
+for (let i = nums.length - 1; i >= 0; i--) {
+    console.log("nums: ", nums)
+    //find the index of val
+    const indexVal = nums.indexOf(val)
+    //indexOf -1 means not in the array, yet when added to splice function, it takes off the last element of the array, so break when indexVal === -1
+    if (indexVal === -1) {
+        break
+    } 
+    console.log(indexVal)
+    //remove val from nums array
+    const spliceNums = nums.splice(indexVal, 1)
+    console.log(spliceNums)
+    
+    }
+};
