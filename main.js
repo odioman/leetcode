@@ -1393,3 +1393,28 @@ for (let i = nums.length - 1; i >= 0; i--) {
     
     }
 };
+
+/* 27. Remove Element better complexity */
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+ var removeElement = function(nums, val) {
+    //want a pointer to track currentVal character
+    let currentVal = 0;
+    //iterate over nums;
+    for (let i = 0; i < nums.length; i++) {
+    //each iteration check if current number is val
+        if (nums[i] === val) {
+            //if yes, continue
+            continue
+        } else {
+            //if no, swap and nums[i] and currentVal then increment value of currentVal
+            nums[currentVal] = nums[i]
+            currentVal++
+        }
+    }
+    //return currentVal
+    return currentVal;    
+}
