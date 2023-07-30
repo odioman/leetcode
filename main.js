@@ -1418,3 +1418,25 @@ for (let i = nums.length - 1; i >= 0; i--) {
     //return currentVal
     return currentVal;    
 }
+
+/* 557. Reverse Words in a String III */
+/**
+ * @param {string} s
+ * @return {string}
+ */
+ var reverseWords = function(s) {
+    //break s up into an array of words
+    const arrWords = s.split(' ');
+    //Iterate over an array of words
+    for (let i = 0; i < arrWords.length; i++) {
+        //reverse current word
+        const currentWord = arrWords[i]
+        const currentWordArray = currentWord.split('')
+        currentWordArray.reverse()
+        arrWords[i] = currentWordArray.join('');
+    }
+    //join all words into a string
+
+    //return answer
+    return arrWords.join(' ')
+};
