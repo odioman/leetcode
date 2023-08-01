@@ -1440,3 +1440,39 @@ for (let i = nums.length - 1; i >= 0; i--) {
     //return answer
     return arrWords.join(' ')
 };
+
+/* 859. Buddy Strings */
+/**
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
+ */
+ var buddyStrings = function(s, goal) {
+    const finalArr = [];
+    const letters = new Set(s);
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== goal[i]) {
+            finalArr.push([s[i], goal[i]]);
+        }
+    }
+
+    console.log(finalArr);
+
+    if (s.length !== goal.length) {
+        return false
+    } 
+
+    if (s === goal) {
+        return letters.size < goal.length
+    }
+
+    if (finalArr.length === 2) {
+        const word1 = finalArr[0].join('');
+        const word2 = finalArr[1].reverse().join('');
+
+        return word1 === word2 
+    }
+
+    return false;
+};
