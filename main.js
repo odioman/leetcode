@@ -1515,3 +1515,34 @@ for (let i = nums.length - 1; i >= 0; i--) {
      //return final array 
      return finalArr 
  };
+
+ /* 645. Set Mismatch - 7/49 Testcases passing */
+ /**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findErrorNums = function(nums) {
+    //declare an array to house final numbers
+    const finalObj = new Set();
+    //iterate using for loop
+    for (let i = 0; i < nums.length; i++) {
+        //iterate using second for loop
+        for (let j = 1; j < nums.length; j++) {
+            //i !== j so it doesn't equal the same element
+            if (i !== j) {
+                //if array[i] === array[j]
+                if (nums[i] === nums[j]) {
+                    //finalArr.push(nums[j])
+                    finalObj.add(nums[i]);
+                    console.log(nums[i])
+                    //finalArr.push(nums[j] + 1)
+                    finalObj.add(nums[i] + 1);
+                } 
+               
+            } 
+            
+        }
+        
+    }
+     return [...finalObj]
+};
