@@ -1546,3 +1546,38 @@ var findErrorNums = function(nums) {
     }
      return [...finalObj]
 };
+
+var reverseVowels = function(s) {
+    //create vowels array to help with finding vowels
+    const vowels = ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']
+    //split string
+    const letterArray = s.split('');
+    //left and right pointers, one at start, one at end
+    left = 0
+    right = letterArray.length - 1;
+    //iterate over split string array while left < right
+        while (left < right) {
+            leftLetter = letterArray[left]
+            rightLetter = letterArray[right]
+            //look for consonants, if consonant increment left, decrement right
+            if (!vowels.includes(leftLetter)) {
+                left++;
+                continue;
+            }
+
+            if (!vowels.includes(rightLetter)) {
+                right--;
+                continue;
+            }
+        //swap leftLetter for split string array[right] if vowel
+        letterArray[right] = leftLetter;
+        letterArray[left] = rightLetter;
+
+        //move pointers off of current letters
+        left++;
+        right--;
+        }
+    //join split string
+    return letterArray.join('');
+    //return split string
+};
