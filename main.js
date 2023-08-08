@@ -1547,6 +1547,7 @@ var findErrorNums = function(nums) {
      return [...finalObj]
 };
 
+/* 345. Reverse Vowels of a String */
 var reverseVowels = function(s) {
     //create vowels array to help with finding vowels
     const vowels = ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']
@@ -1581,3 +1582,88 @@ var reverseVowels = function(s) {
     return letterArray.join('');
     //return split string
 };
+
+/* 21. Merge Two Sorted Lists */
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+ var mergeTwoLists = function(list1, list2) {
+    //make two pointers, pointer1 and pointer2
+    //assign heads of the two lists to the pointers
+    let pointer1 = list1;
+    let pointer2 = list2
+    const answer = new ListNode()
+    let answerPointer = answer
+    
+    //iterate until both pointers are null (while loop)
+        while (pointer1 || pointer2) {
+        //null check
+        if (!pointer1) {
+            answerPointer.next = new ListNode(pointer2.val)
+            answerPointer = answerPointer.next
+            pointer2 = pointer2.next
+            continue;
+        }
+
+        if (!pointer2) {
+            answerPointer.next = new ListNode(pointer1.val)
+            answerPointer = answerPointer.next
+            pointer1 = pointer1.next
+            continue;
+        }
+
+        //compare which number is lower or higher
+        if (pointer1.val > pointer2.val) {
+        //take the lower one and add to list
+            answerPointer.next = new ListNode(pointer2.val)
+            //move pointer forward one
+            answerPointer = answerPointer.next
+            pointer2 = pointer2.next
+        } else {
+            answerPointer.next = new ListNode(pointer1.val)
+            answerPointer = answerPointer.next
+            pointer1 = pointer1.next
+        }
+
+
+        }
+    //return the head of merged linked list
+    return answer.next
+};
+
+/* 645. Set Mismatch */
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var findErrorNums = function(nums) {
+    //set an array to hold output
+    const finalArr = [];
+    //set an object to track numbers;
+    const numberHash = {};
+    //iterate over the nums array 
+    for (let i = 0; i < nums.length; i++) {
+        if (numberHash[nums[i]]) {
+            finalArr.push(nums[i])
+        } else {
+            numberHash[nums[i]] = 1
+        }
+    }
+
+    for (let i = 1; i <= nums.length; i++ ) {
+        if (!numberHash[i]) {
+            finalArr.push(i)
+            break;
+        }            
+    }
+    return finalArr
+ };
