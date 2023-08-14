@@ -1510,7 +1510,7 @@ for (let i = nums.length - 1; i >= 0; i--) {
          //Map.get to receive rank of number
          const getRank = numberToRanks.get(number)
          //push to final array
-         finalArr.push (getRank)    
+         finalArr.push(getRank)    
      }
      //return final array 
      return finalArr 
@@ -1667,3 +1667,43 @@ var reverseVowels = function(s) {
     }
     return finalArr
  };
+
+ /* 142. Linked List Cycle II*/
+ /**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var detectCycle = function(head) {
+    //variables to hold pointers 
+    let slow = head;
+    let fast = head;
+
+    //loop through LL with 2 pointers
+    while (fast?.next) {
+        slow = slow.next
+        fast = fast.next.next
+        //if pointers are equal, loop present, return node
+        if (slow === fast) {
+            //reset slow to head
+            slow = head
+            //increment slow and fast by 1 node a piece
+            while(slow !== fast) {
+                //until slow and fast are the same
+                slow = slow.next
+                fast = fast.next
+            }
+            //return node in which they aer the same agian
+            return slow
+        }
+    }
+    return null
+
+};
