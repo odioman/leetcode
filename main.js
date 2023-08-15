@@ -1707,3 +1707,24 @@ var detectCycle = function(head) {
     return null
 
 };
+
+/* 441. Arranging Coins */
+/**
+ * @param {number} n
+ * @return {number}
+ */
+ var arrangeCoins = function(n) {
+    //first row is going to be 1, second row 2, 3rd row 3, etc
+    //use a while loop to iterate over coin amount
+    let counter = 1;
+    
+    while (n > counter) {
+    //use a counter, if counter is same as amount of coins in staircase level, return coins in staircase
+        n -= counter;
+        if (counter >= n) {
+            break
+        }
+        counter++ ; 
+    }
+    return counter
+};
