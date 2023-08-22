@@ -1728,3 +1728,27 @@ var detectCycle = function(head) {
     }
     return counter
 };
+
+/* 389. Find the Difference */
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+ var findTheDifference = function(s, t) {
+    //split s
+    const splitS = s.split('')
+    //split t
+    const splitT = t.split('')
+    //sort s
+    const sortS = splitS.sort()
+    //sort t
+    const sortT = splitT.sort()
+    
+    for (let i = 0; i < sortT.length; i++) {
+        if (sortS[i] !== sortT[i]) {
+            console.log(sortT[i])
+            return sortT[i]
+        }
+    }
+};
