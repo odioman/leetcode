@@ -1752,3 +1752,24 @@ var detectCycle = function(head) {
         }
     }
 };
+
+/* 268. Missing Number */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var missingNumber = function(nums) {
+    //sort nums
+    const sortNums = nums.sort((a, b) => a - b) 
+    //iterate over nums
+    for (let i = 0; i < sortNums.length; i++) {
+        //nums[i] === i 
+        //if nums[i] !== i
+        //return i
+        if (sortNums[i] !== i) {
+            return i
+        }
+    }
+
+    return sortNums.length
+};
