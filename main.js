@@ -1773,3 +1773,26 @@ var detectCycle = function(head) {
 
     return sortNums.length
 };
+
+/* 509. Fibonacci Number */
+/**
+ * @param {number} n
+ * @return {number}
+ */
+ var fib = function (n) {
+    //for base case 
+        // n === 0 
+        if (n === 0) {
+            // return 0
+            return 0
+        //if n === 1
+        } else if (n === 1) {
+            //return 1
+            return 1
+        } else if (n > 1) {
+            //denote n - 1
+            //denote n - 2
+            //add together
+           return fib(n - 1) + fib(n - 2)
+        }
+    }
