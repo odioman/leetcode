@@ -1796,3 +1796,30 @@ var detectCycle = function(head) {
            return fib(n - 1) + fib(n - 2)
         }
     }
+
+    /* 13. Roman to Integer */
+    /**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    //make an object with the corresponding values of Roman to Decimal Numbers
+    const romanToInteger = {I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000}
+    //add up the values of the Roman Number
+    const eachDigit = s.split('');
+
+    const mappedDigits = eachDigit.map((digit, i) => {
+        //if the value before a digit is less than it
+        if (i < eachDigit.length - 1 && romanToInteger[digit] < romanToInteger[eachDigit[i + 1]]) {
+            return romanToInteger[digit] * -1
+        }   
+        return romanToInteger[digit]
+    })
+    const reduceDigits = mappedDigits.reduce((a,b) => a + b, 0);
+
+    return reduceDigits
+    //Give special case for IX(9) or IV(4), XL(40) or XC(90), CD(400) or CM (900) 
+    //return integer number
+
+
+};
