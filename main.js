@@ -1823,3 +1823,32 @@ var romanToInt = function(s) {
 
 
 };
+
+**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    const finalArr = [];
+    for (let i = 1; i <= numRows; i++) {
+        if (i === 1) {
+            finalArr.push([1]);
+        } else {
+            const curLastRow = finalArr[finalArr.length - 1]
+            const dummyRow = [0, ...curLastRow, 0];
+            //[0,1,2,1,0]
+            const rowAdd = [];
+            for (let j = 0; j < dummyRow.length - 1; j++) {
+                const finalNumber = dummyRow[j] + dummyRow[j+1];
+                rowAdd.push(finalNumber);
+                
+            }
+            
+            finalArr.push(rowAdd)
+            
+            
+        }
+    }
+    return finalArr
+
+};
